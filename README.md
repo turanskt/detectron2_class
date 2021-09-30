@@ -1,20 +1,19 @@
 # Introduction 
-This is an implementation of the detectron2 applied to multi-class classifier. 
-The training can be done on both CPU/GPU with an appropriate machine and command.
-It also has been tested on the RPi4 with Logitech c930e.
-The backbone has been inspired from https://github.com/tkianai/ImageClassification.detectron2
-Model has been trained for 3 classes for this Yoli case: Correct, Incorrect and Nothing (means no board)
+This repo contains two tools that aim to work on a Raspberry Pi4 with a Logitech c930e plugged on. 
+It is designed to work as a remote multi-class classifier.
+The model is a Detectron2-based one, a direct implementation of https://github.com/tkianai/ImageClassification.detectron2
+The predictor contains also a motion detection tool. Since, in my case the initial data was too small to train the Detectron2-based classifier, the motion detection has been designed to collect data remotely by using a Rasbperry Pi 4 and the webcam. This detector only intended to work until data is collected. 
+
 
 ### Options
-There are 2 modes and they can run at the same time. Both flags to diable or enable them is 0 or 1. By default, both are set to 0.
--s flag is for saving video. The aim is to gather enough data for inferencing.
--p flag is for the inference. Each frame of the webcam is extracted with Gstreamer and goes into the inferencing box.
+The predictor contains 2 modes that can run at the same time. By default both modes are set to 0. 
+-s flag is for the motion detection that allows video recording. The aim is to gather enough data for inferencing as preivously explained.
+-p flag is for the inference of the classifier. Each frame of the webcam is extracted with GStreamer framework and goes into the inferencing box.
 
-### Motion detection
+### Misc information
 Motion detection is based on the subtraction of 2 grayscaled images after Clahe processing so with using OpenCV image processing tools. Thresholding can be adjust with MIN_CNT which adjusts the number of contours detected in the result of a subtraction.
 If there is no movement during 15min, the pipeline stops.
 
-### Data sync
 Every recorded videos are sync with the Google server dedicated to the Yoli case. Sync is set up using systemd which runs (on boot) automatically a python script called rsync.py with a dedicated rsync command in it. The yoli_data.timer and yoli.data.service need to be moved to /etc/systemd/system/.<br/>
 The timer can be run with the following command : <br/>
 sudo systemctl start yoli_data.timer <br/>
