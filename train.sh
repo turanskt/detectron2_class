@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0 python train_net_builtin.py --config-file configs/Base_image_cls.yaml
