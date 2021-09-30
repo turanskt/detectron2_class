@@ -78,4 +78,4 @@ python predictor.py --model output/model_final.pth --config output/config.yaml
 3. pip install pycairo <br/>
 
 - OpenCV : <br/>
-1.  pip install opencv-python
+1.  pip install opencv-python# detectron2_class
