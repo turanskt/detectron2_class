@@ -1,8 +1,8 @@
 # Introduction 
 This repo contains two tools that aim to work on a Raspberry Pi4 with a Logitech c930e plugged on. 
 It is designed to work as a remote multi-class classifier.
-The model is a Detectron2-based one, a direct implementation of https://github.com/tkianai/ImageClassification.detectron2
-The predictor contains also a motion detection tool. Since, in my case the initial data was too small to train the Detectron2-based classifier, the motion detection has been designed to collect data remotely by using a Rasbperry Pi 4 and the webcam. This detector only intended to work until data is collected. 
+The model is a Detectron2-based one, a direct implementation of https://github.com/tkianai/ImageClassification.detectron2 </br>
+The predictor contains also a motion detection tool. Since, in my case the initial data was too small to train the Detectron2-based classifier, the motion detection has been designed to collect data remotely by using a Rasbperry Pi 4 and a webcam. This detector only intended to work until data is collected. 
 
 
 ### Options
